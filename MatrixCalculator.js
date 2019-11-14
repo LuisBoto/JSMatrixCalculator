@@ -13,6 +13,36 @@ class MatrixCalculator {
 		this.ByDimension = 3;
 	}
 	
+	multiplyMatrix() {
+		this.rebuildMatrix();
+		if (this.AxDimension!=this.ByDimension) {
+			this.printOnConsole("Number of columns on A is different from number of rows on B.");
+			return;
+		}
+		var result = [];
+		for(var i=0; i<3; i++) 
+			result[i]=[];
+		i=0;
+		var j=0;
+		//x is columns, y is rows
+		var rowsRes = this.AyDimension;
+		var columnsRes = this.BxDimension;
+		
+		for (i=0; i<rowsRes; i++) {
+			for (j=0; j<columnsRes; j++) {
+				result[i][j] = this.matrixA[i][0]*this.matrixB[0][j]+this.matrixA[i][1]*this.matrixB[1][j]+this.matrixA[i][2]*this.matrixB[2][j];
+			}
+		}
+		var cadena = "";
+		for (i=0; i<rowsRes; i++) {
+			for (j=0; j<columnsRes; j++) {
+				cadena=cadena+" "+result[i][j];
+			}
+			cadena=cadena+"\\n";
+		}
+		this.printOnConsole(cadena);
+	}
+	
 	calculateDeterminant() {
 		this.rebuildMatrix();
 		if (this.AxDimension!=this.AyDimension) {
