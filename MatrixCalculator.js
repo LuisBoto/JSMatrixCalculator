@@ -33,12 +33,12 @@ class MatrixCalculator {
 				result[i][j] = this.matrixA[i][0]*this.matrixB[0][j]+this.matrixA[i][1]*this.matrixB[1][j]+this.matrixA[i][2]*this.matrixB[2][j];
 			}
 		}
-		var cadena = "";
+		var cadena = "Multiplication result:\r";
 		for (i=0; i<rowsRes; i++) {
 			for (j=0; j<columnsRes; j++) {
 				cadena=cadena+" "+result[i][j];
 			}
-			cadena=cadena+"\\n";
+			cadena=cadena+"\r";
 		}
 		this.printOnConsole(cadena);
 	}
