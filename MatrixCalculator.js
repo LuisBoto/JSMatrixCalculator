@@ -15,9 +15,33 @@ class MatrixCalculator {
 	
 	calculateDeterminant() {
 		this.rebuildMatrix();
-		console.log(this.AxDimension);
-		
-		console.log(this.AyDimension);
+		if (this.AxDimension!=this.AyDimension) {
+			this.printOnConsole("Non-square matrix, determinant cannot be calculated");
+			return;
+		}
+		var determinant;
+		if (this.AxDimension==1) {
+			determinant = this.matrixA[0][0];
+		}
+		if (this.AxDimension==2) {
+			determinant = (this.matrixA[0][0]*this.matrixA[1][1])-(this.matrixA[0][1]*this.matrixA[1][0]);
+		}
+		if (this.AxDimension==3) {
+			var op1, op2, op3, r1, r2, r3;
+			op1 = this.matrixA[0][0]*this.matrixA[1][1]*this.matrixA[2][2];
+			op2 = this.matrixA[0][1]*this.matrixA[1][2]*this.matrixA[2][0];
+			op3 = this.matrixA[0][2]*this.matrixA[1][0]*this.matrixA[2][1];
+			r1 = this.matrixA[0][2]*this.matrixA[1][1]*this.matrixA[2][0];
+			r2 = this.matrixA[0][0]*this.matrixA[1][2]*this.matrixA[2][1];
+			r3 = this.matrixA[0][1]*this.matrixA[1][0]*this.matrixA[2][2];
+			determinant = op1+op2+op3-r1-r2-r3;
+		}
+		this.printOnConsole("Determinant: "+determinant)
+		return;
+	}
+	
+	printOnConsole(val) {
+		document.getElementById("console").value = val;
 	}
 	
 	rebuildMatrix() {
@@ -58,7 +82,7 @@ class MatrixCalculator {
 			count--;
 		}
 		
-		//Calculating matrix B's dimensions
+		//Calculating matrix B's dimensions in the same way
 		this.ByDimension = 3;
 		this.BxDimension = 3;
 		
