@@ -1,4 +1,13 @@
+header {
+	text-align: center;
+	display: block;
+	margin-left: auto;
+    margin-right: auto;
+}
+
 #upper {
+	margin-left: auto;
+    margin-right: auto;
 	display: flex;
 	flex-flow: row wrap;
 	width: 23em;
@@ -75,7 +84,15 @@
 	justify-content: center;
 }
 
+.function {
+	width: 8em;
+	height: 10%;
+}
+
 #console {
+	display: block;
+	margin-left: auto;
+    margin-right: auto;
 	width: 70%;
 	height: 50%;
 }
