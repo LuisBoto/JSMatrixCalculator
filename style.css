@@ -64,3 +64,18 @@
 	height: 10%;
 	text-align: center;
 }
+
+.functions {
+	order: 5;
+	width: 9em;
+	height: 40%;
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-content: center;
+}
+
+.console {
+	width: 70%;
+	height: 50%;
+}

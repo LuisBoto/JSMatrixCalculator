@@ -8,6 +8,10 @@ class MatrixCalculator {
 		this.ByDimension = 0;
 	}
 	
+	calculateDeterminant() {
+		
+	}
+	
 	rebuildMatrix() {
 		var row1 = document.getElementsByClassName("m1r1");
 		var row2 = document.getElementsByClassName("m1r2");
@@ -58,3 +62,5 @@ class MatrixCalculator {
 		}		
 	}
 }
+
+var mc = new MatrixCalculator();
