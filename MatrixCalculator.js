@@ -13,6 +13,55 @@ class MatrixCalculator {
 		this.ByDimension = 3;
 	}
 	
+	subtractMatrix() {
+		this.rebuildMatrix();
+		if (this.AxDimension!=this.AyDimension) {
+			this.printOnConsole("Matrices have different dimmensions.");
+			return;
+		}
+		var result = [];
+		for(var i=0; i<3; i++) 
+			result[i]=[];
+		for (i =0; i<this.AyDimension; i++) {
+			for (var j=0; j<this.AxDimension; j++) {
+				result[i][j]=this.matrixA[i][j]-this.matrixB[i][j];
+			}
+		}
+		var string = "Subtraction result:\r";
+		for (i =0; i<this.AyDimension; i++) {
+			for (var j=0; j<this.AxDimension; j++) {
+				string=string+"\t"+result[i][j];
+			}
+			string=string+"\r";
+		}
+		this.printOnConsole(string);
+	}
+	
+	addMatrix() {
+		this.rebuildMatrix();
+		if (this.AxDimension!=this.AyDimension) {
+			this.printOnConsole("Matrices have different dimmensions.");
+			return;
+		}
+		var result = [];
+		for(var i=0; i<3; i++) 
+			result[i]=[];
+		for (i =0; i<this.AyDimension; i++) {
+			for (var j=0; j<this.AxDimension; j++) {
+				//Parsing is necessary here since addition operator can also concatenate strings
+				result[i][j]=parseFloat(this.matrixA[i][j])+parseFloat(this.matrixB[i][j]);
+			}
+		}
+		var string = "Addition result:\r";
+		for (i =0; i<this.AyDimension; i++) {
+			for (var j=0; j<this.AxDimension; j++) {
+				string=string+"\t"+result[i][j];
+			}
+			string=string+"\r";
+		}
+		this.printOnConsole(string);
+	}
+	
 	multiplyMatrix() {
 		this.rebuildMatrix();
 		if (this.AxDimension!=this.ByDimension) {
@@ -24,7 +73,7 @@ class MatrixCalculator {
 			result[i]=[];
 		i=0;
 		var j=0;
-		//x is columns, y is rows
+		//x refers to columns, y refers to rows
 		var rowsRes = this.AyDimension;
 		var columnsRes = this.BxDimension;
 		
@@ -33,14 +82,14 @@ class MatrixCalculator {
 				result[i][j] = this.matrixA[i][0]*this.matrixB[0][j]+this.matrixA[i][1]*this.matrixB[1][j]+this.matrixA[i][2]*this.matrixB[2][j];
 			}
 		}
-		var cadena = "Multiplication result:\r";
+		var string = "Multiplication result:\r";
 		for (i=0; i<rowsRes; i++) {
 			for (j=0; j<columnsRes; j++) {
-				cadena=cadena+" "+result[i][j];
+				string=string+"\t"+result[i][j];
 			}
-			cadena=cadena+"\r";
+			string=string+"\r";
 		}
-		this.printOnConsole(cadena);
+		this.printOnConsole(string);
 	}
 	
 	calculateDeterminant() {
