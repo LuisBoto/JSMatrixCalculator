@@ -13,6 +13,18 @@ class MatrixCalculator {
 		this.ByDimension = 3;
 	}
 	
+	transposeMatrix() {
+		this.rebuildMatrix();
+		var string = "Transposition result:\r";
+		for (var i =0; i<this.AxDimension; i++) {
+			for (var j=0; j<this.AyDimension; j++) {
+				string=string+"\t"+this.matrixA[j][i];
+			}
+			string=string+"\r";
+		}
+		this.printOnConsole(string);
+	}
+	
 	subtractMatrix() {
 		this.rebuildMatrix();
 		if (this.AxDimension!=this.AyDimension) {
