@@ -1,3 +1,33 @@
+#upper {
+	display: flex;
+	flex-flow: row wrap;
+	width: 23em;
+	background: #FAFAFA;
+	align-items: center;
+	justify-content: center;
+}
+
+#matrix1, #matrix2{
+	order: 1;
+	width: 9em;
+	height: 40%;
+}
+
+#operations {
+	order: 1;
+	width: 5em;
+	height: 40%;
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-content: center;
+}
+
+.operation {
+	width: 5em;
+	height: 10%
+}
+
 .parent {
 	display: flex;
 	flex-flow: row wrap;
@@ -14,21 +44,21 @@
 	text-align: center;
 }
 
-.m1r1 {
+.m1r1, .m2r1 {
 	order: 2;
 	width: 3em;
 	height: 10%;
 	text-align: center;
 }
 
-.m1r2 {
+.m1r2, .m2r2 {
 	order: 3;
 	width: 3em;
 	height: 10%;
 	text-align: center;
 }
 
-.m1r3 {
+.m1r3, .m2r3 {
 	order: 4;
 	width: 3em;
 	height: 10%;
