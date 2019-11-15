@@ -13,6 +13,10 @@ class MatrixCalculator {
 		this.ByDimension = 3;
 	}
 	
+	calculateRange() {
+		
+	}
+	
 	invertMatrix() {		
 		this.calculateDeterminant();
 		if (this.determinantA==null)
