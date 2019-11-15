@@ -13,8 +13,47 @@ class MatrixCalculator {
 		this.ByDimension = 3;
 	}
 	
-	calculateRange() {
+	calculateRank() {
+		this.rebuildMatrix();
 		
+		var rank = this.AxDimension;
+		var row = this.AyDimension;
+		var mat = this.matrixA;
+		
+		for (row = 0; row < rank; row++) { 
+			if (mat[row][row]) { 
+			   for (var col = 0; col < this.AyDimension; col++) { 
+				   if (col != row) { 
+					 var mult = mat[col][row] / mat[row][row]; 
+					 for (var i = 0; i < rank; i++) 
+					   mat[col][i] -= mult * mat[row][i]; 
+				  } 
+			   } 
+			} 
+			else
+			{ 
+				var reduce = true; 
+				for (var i = row + 1; i < this.AyDimension;  i++) 
+				{ 
+					if (mat[i][row]) 
+					{ 
+						var aux = mat[row];
+						mat[row] = math[i];
+						math[i] = aux;
+						reduce = false; 
+						break; 
+					} 
+				} 
+				if (reduce) 
+				{ 
+					rank--; 
+					for (i = 0; i < this.AyDimension; i++) 
+						mat[i][row] = mat[i][rank]; 
+				} 
+				row--; 
+			} 
+		} 
+		this.printOnConsole("Matrix rank is: "+rank); 		
 	}
 	
 	invertMatrix() {		
