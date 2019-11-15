@@ -48,6 +48,7 @@ header {
 
 .title {
 	order: 1;
+	font-family: "Times New Roman", serif;
 	width: 9em;
 	height: 10%;
 	text-align: center;
