@@ -16,7 +16,11 @@ class MatrixCalculator {
 	invertMatrix() {		
 		this.calculateDeterminant();
 		if (this.determinantA==null)
+			return; //Error will already be printed out by calculateDeterminant method.
+		if(this.determinantA==0) {
+			this.printOnConsole("Matrix is non-invertible.");
 			return;
+		}
 		var adjacent = [];
 		var result = [];
 		var aux = [];
@@ -59,7 +63,14 @@ class MatrixCalculator {
 			}
 		}
 		
-		var string = "Adjacent matrix:\r";
+		//We divide by the determinant
+		for (var i =0; i<this.AxDimension; i++) {
+			for (var j=0; j<this.AyDimension; j++) {
+				result[i][j]=result[i][j]/this.determinantA;
+			}
+		}
+		
+		var string = "Inverse matrix:\r";
 		for (i =0; i<this.AyDimension; i++) {
 			for (var j=0; j<this.AxDimension; j++) {
 				string=string+"\t"+result[i][j];
@@ -165,7 +176,7 @@ class MatrixCalculator {
 		this.rebuildMatrix();
 		if (this.AxDimension!=this.AyDimension) {
 			this.determinantA=null;
-			this.printOnConsole("Non-square matrix, determinant cannot be calculated");
+			this.printOnConsole("Non-square matrix, determinant cannot be calculated.");
 			return;
 		}
 		var determinant;
