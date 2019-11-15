@@ -13,6 +13,63 @@ class MatrixCalculator {
 		this.ByDimension = 3;
 	}
 	
+	invertMatrix() {		
+		this.calculateDeterminant();
+		if (this.determinantA==null)
+			return;
+		var adjacent = [];
+		var result = [];
+		var aux = [];
+		for(var i=0; i<3; i++) {
+			adjacent[i] = [];
+			result[i] = [];
+			aux[i]=[];
+		}
+		//Calculating adjacency matrix
+		for (i =0; i<this.AyDimension; i++) {
+			for (var j=0; j<this.AxDimension; j++) {
+				if (this.AxDimension == 1)
+					adjacent[i][j] = 1/this.matrixA[i][j];
+				if (this.AxDimension==2)
+					adjacent[i][j] = ((-1)**(i+1+j+1))*this.matrixA[i][j];
+				if (this.AxDimension==3) { 
+					//Reconstructing 2 dimension sub matrix
+					var count1 = 0;
+					var count2 = 0;
+					for (var k=0; k<3; k++) {
+						for (var l=0; l<3; l++) {
+							if (l!=j && k!=i) {
+								console.log(count1+" "+count2);
+								aux[count1][count2]=this.matrixA[k][l];
+								count2++;
+							}
+						}
+						count2 = 0;
+						if (k!=i)
+							count1++;
+					}
+					adjacent[i][j] = ((-1)**(i+1+j+1))*(aux[0][0]*aux[1][1]-aux[0][1]*aux[1][0]);
+				}
+			}
+		}
+		//Transposing it
+		for (var i =0; i<this.AxDimension; i++) {
+			for (var j=0; j<this.AyDimension; j++) {
+				result[i][j]=adjacent[j][i];
+			}
+		}
+		
+		var string = "Adjacent matrix:\r";
+		for (i =0; i<this.AyDimension; i++) {
+			for (var j=0; j<this.AxDimension; j++) {
+				string=string+"\t"+result[i][j];
+			}
+			string=string+"\r";
+		}
+		this.printOnConsole(string);
+		
+	}
+	
 	transposeMatrix() {
 		this.rebuildMatrix();
 		var string = "Transposition result:\r";
@@ -107,6 +164,7 @@ class MatrixCalculator {
 	calculateDeterminant() {
 		this.rebuildMatrix();
 		if (this.AxDimension!=this.AyDimension) {
+			this.determinantA=null;
 			this.printOnConsole("Non-square matrix, determinant cannot be calculated");
 			return;
 		}
@@ -127,6 +185,7 @@ class MatrixCalculator {
 			r3 = this.matrixA[0][1]*this.matrixA[1][0]*this.matrixA[2][2];
 			determinant = op1+op2+op3-r1-r2-r3;
 		}
+		this.determinantA = determinant;
 		this.printOnConsole("Determinant: "+determinant)
 		return;
 	}

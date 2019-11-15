@@ -87,12 +87,13 @@ header {
 .function {
 	width: 8em;
 	height: 10%;
+	border-radius: 2em;
 }
 
 #console {
 	display: block;
 	margin-left: auto;
     margin-right: auto;
-	width: 70%;
+	width: 40%;
 	height: 50%;
 }
