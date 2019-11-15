@@ -34,8 +34,9 @@ class MatrixCalculator {
 			for (var j=0; j<this.AxDimension; j++) {
 				if (this.AxDimension == 1)
 					adjacent[i][j] = 1/this.matrixA[i][j];
-				if (this.AxDimension==2)
-					adjacent[i][j] = ((-1)**(i+1+j+1))*this.matrixA[i][j];
+				if (this.AxDimension==2) {
+					adjacent[j][i] = ((-1)**(i+1+j+1))*this.matrixA[i][j];
+				}
 				if (this.AxDimension==3) { 
 					//Reconstructing 2 dimension sub matrix
 					var count1 = 0;
@@ -43,7 +44,6 @@ class MatrixCalculator {
 					for (var k=0; k<3; k++) {
 						for (var l=0; l<3; l++) {
 							if (l!=j && k!=i) {
-								console.log(count1+" "+count2);
 								aux[count1][count2]=this.matrixA[k][l];
 								count2++;
 							}
@@ -61,6 +61,11 @@ class MatrixCalculator {
 			for (var j=0; j<this.AyDimension; j++) {
 				result[i][j]=adjacent[j][i];
 			}
+		}
+		if (this.AxDimension==2) {
+			var temp = result[0][0];
+			result[0][0] = result[1][1];
+			result[1][1] = temp;
 		}
 		
 		//We divide by the determinant
