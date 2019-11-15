@@ -33,7 +33,7 @@ class MatrixCalculator {
 		for (i =0; i<this.AyDimension; i++) {
 			for (var j=0; j<this.AxDimension; j++) {
 				if (this.AxDimension == 1)
-					adjacent[i][j] = 1/this.matrixA[i][j];
+					adjacent[i][j] = 1+"/"+this.matrixA[i][j];
 				if (this.AxDimension==2) {
 					adjacent[j][i] = ((-1)**(i+1+j+1))*this.matrixA[i][j];
 				}
@@ -69,9 +69,11 @@ class MatrixCalculator {
 		}
 		
 		//We divide by the determinant
-		for (var i =0; i<this.AxDimension; i++) {
-			for (var j=0; j<this.AyDimension; j++) {
-				result[i][j]=result[i][j]/this.determinantA;
+		if (this.AxDimension!=1) {
+			for (var i =0; i<this.AxDimension; i++) {
+				for (var j=0; j<this.AyDimension; j++) {
+					result[i][j]=result[i][j]/this.determinantA;
+				}
 			}
 		}
 		
