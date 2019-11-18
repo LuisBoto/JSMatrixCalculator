@@ -24,7 +24,7 @@ class MatrixCalculator {
 			if (mat[row][row]) { 
 			   for (var col = 0; col < this.AyDimension; col++) { 
 				   if (col != row) { 
-					 var mult = mat[col][row] / mat[row][row]; 
+					 var mult = Math.round(mat[col][row] / mat[row][row]*100)/100; 
 					 for (var i = 0; i < rank; i++) 
 					   mat[col][i] -= mult * mat[row][i]; 
 				  } 
@@ -115,7 +115,7 @@ class MatrixCalculator {
 		if (this.AxDimension!=1) {
 			for (var i =0; i<this.AxDimension; i++) {
 				for (var j=0; j<this.AyDimension; j++) {
-					result[i][j]=result[i][j]/this.determinantA;
+					result[i][j]=Math.round(result[i][j]/this.determinantA*100)/100;
 				}
 			}
 		}
@@ -154,7 +154,7 @@ class MatrixCalculator {
 			result[i]=[];
 		for (i =0; i<this.AyDimension; i++) {
 			for (var j=0; j<this.AxDimension; j++) {
-				result[i][j]=this.matrixA[i][j]-this.matrixB[i][j];
+				result[i][j]=Math.round((parseFloat(this.matrixA[i][j])-parseFloat(this.matrixB[i][j]))*100)/100;
 			}
 		}
 		var string = "Subtraction result:\r";
@@ -179,7 +179,7 @@ class MatrixCalculator {
 		for (i =0; i<this.AyDimension; i++) {
 			for (var j=0; j<this.AxDimension; j++) {
 				//Parsing is necessary here since addition operator can also concatenate strings
-				result[i][j]=parseFloat(this.matrixA[i][j])+parseFloat(this.matrixB[i][j]);
+				result[i][j]=Math.round((parseFloat(this.matrixA[i][j])+parseFloat(this.matrixB[i][j]))*100)/100;
 			}
 		}
 		var string = "Addition result:\r";
@@ -210,6 +210,7 @@ class MatrixCalculator {
 		for (i=0; i<rowsRes; i++) {
 			for (j=0; j<columnsRes; j++) {
 				result[i][j] = this.matrixA[i][0]*this.matrixB[0][j]+this.matrixA[i][1]*this.matrixB[1][j]+this.matrixA[i][2]*this.matrixB[2][j];
+				result[i][j] = Math.round(result[i][j]*100)/100;
 			}
 		}
 		var string = "Multiplication result:\r";
@@ -244,7 +245,7 @@ class MatrixCalculator {
 			r1 = this.matrixA[0][2]*this.matrixA[1][1]*this.matrixA[2][0];
 			r2 = this.matrixA[0][0]*this.matrixA[1][2]*this.matrixA[2][1];
 			r3 = this.matrixA[0][1]*this.matrixA[1][0]*this.matrixA[2][2];
-			determinant = op1+op2+op3-r1-r2-r3;
+			determinant = Math.round((op1+op2+op3-r1-r2-r3)*100)/100;
 		}
 		this.determinantA = determinant;
 		this.printOnConsole("Determinant: "+determinant)
