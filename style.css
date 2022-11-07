@@ -6,41 +6,42 @@ header {
 }
 
 #upper {
+	margin-top: 5px;
 	margin-left: auto;
     margin-right: auto;
 	display: flex;
 	flex-flow: row wrap;
-	width: 23em;
+	width: 29em;
 	background: #FAFAFA;
-	align-items: center;
-	justify-content: center;
+	
 }
 
-#matrix1, #matrix2{
+#matrix1,#matrix2{
 	order: 1;
 	width: 9em;
 	height: 40%;
 }
+
 
 #operations {
 	order: 1;
 	width: 5em;
 	height: 40%;
-	display: flex;
-	flex-flow: row wrap;
-	align-items: center;
-	justify-content: center;
+	display: block;
+	
 }
 
 .operation {
+	display: block;
+	margin: 2px 250px;
 	width: 5em;
-	height: 10%
+	margin-top: 34px;
 }
 
 .parent {
 	display: flex;
 	flex-flow: row wrap;
-	width: 9em;
+	
 	background: #FAFAFA;
 	align-items: center;
 	justify-content: center;
@@ -55,41 +56,58 @@ header {
 }
 
 .m1r1, .m2r1 {
-	order: 2;
+	order: 1;
 	width: 3em;
 	height: 10%;
 	text-align: center;
 }
 
 .m1r2, .m2r2 {
-	order: 3;
+	order: 2;
 	width: 3em;
 	height: 10%;
 	text-align: center;
 }
 
 .m1r3, .m2r3 {
-	order: 4;
+	order: 3;
 	width: 3em;
 	height: 10%;
 	text-align: center;
 }
 
 .functions {
-	order: 5;
+	order: 3;
 	width: 9em;
 	height: 40%;
-	display: flex;
-	flex-flow: row wrap;
-	align-items: center;
-	justify-content: center;
+	display: block;
 }
 
-.function {
-	width: 8em;
-	height: 10%;
-	border-radius: 2em;
+.function1{
+	margin-top: 7px;
+	margin-left: 23px;
+	width: 100px;
 }
+.function2{
+	margin-top: 2px;
+	margin-left: 23px;
+	width: 100px;
+}
+.function3{
+	display: block;
+	margin-left: 248px;
+	width: 100px;
+	margin-top: -46px;
+	text-align: center;
+}
+.function4{
+	display: block;
+	margin-left: 248px;
+	width: 100px;
+	margin-top: 2px;
+	text-align: center;
+}
+
 
 #console {
 	display: block;
